@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Form</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="payment-form">
+    <h1>Pay with credit card</h1>
+    <div class="cards-container">
+        <div class="card green-card">
+            <div class="card-top">
+                <div class="card-brand">
+                  <img src="images/ma_symbol.svg" alt="Mastercard Logo">
+                </div>
+                <span class="card-chip"></span>
+            </div>
+            <div class="card-number" id="cardNumberPreview">XXXX XXXX XXXX XXXX</div>
+            <div class="card-info">
+              <div class="card-holder-name" id="cardNamePreview">YOUR NAME</div>
+              <div class="expiry-info">
+                  <div class="card-expiry-title">EXPIRY</div>
+                  <div class="card-expiry" id="cardExpiryPreview">XX/XX</div>
+              </div>
+              
+          </div>
+        </div>
+        <div class="card black-card">
+          <div class="card-top">
+              <div class="card-brand back">
+                <img src="images/ma_symbol.svg" alt="Mastercard Logo">
+              </div>
+          </div>
+          <div class="card-strip"></div>
+          <div class="card-cvv-box">
+              <div class="card-cvv-title back">CVV</div>
+              <div class="card-cvv-value back" id="cardCvvBackPreview">XXX</div>
+          </div>
+      </div>
+    </div>
+
+    <form id="creditCardForm">
+        <div class="form-group">
+          <div class="form-Container">
+            <div class="form-row">
+              <div class="form-group three-fifths-width">
+                  <label for="cardNumber">Credit Card Number</label>
+                  <input type="text" id="cardNumber" minlength="18" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" oninput="updateSubmitButtonState()" required>
+                  <span id="cardError" class="error-message"></span>
+              </div>
+              <div class="form-group one-fifth-width">
+                  <label for="expiryDate">Expiration Date</label>
+                  <input type="text" id="expiryDate" placeholder="MM/YY" minlength="5" maxlength="5" pattern="\d{2}/\d{2}" title="Expiry date format: MM/YY" oninput="updateSubmitButtonState()" required>
+                  <span id="expiryError" class="error-message"></span>
+                  
+              </div>
+              <div class="form-group one-fifth-width">
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" placeholder="XXX" minlength="3" maxlength="4" pattern="\d{3,4}" title="Three digit CVV code" oninput="updateSubmitButtonState()" required>
+              </div>
+          </div>          
+          <div class="form-row">
+              <div class="form-group two-fifths-width">
+                  <label for="cardHolderFirstName">Cardholder's First Name</label>
+                  <input type="text" id="cardHolderFirstName" placeholder="First name" oninput="updateSubmitButtonState()"required>
+                  <span id="nameError" class="error-message"></span>
+              </div>
+              <div class="form-group two-fifths-width">
+                  <label for="cardHolderLastName">Cardholder's Last Name</label>
+                  <input type="text" id="cardHolderLastName" placeholder="Last name" oninput="updateSubmitButtonState()"required>
+                  <span id="nameError" class="error-message"></span>
+              </div>
+              <div class="form-group one-fifth-width">
+                  <label for="billingZip">Billing Zip Code</label>
+                  <input type="text" id="billingZip" minlength="5" maxlength="9 "pattern="\d{5}(-\d{4})?" title="Five digit or nine digit ZIP code" placeholder="XXXXX" oninput="updateSubmitButtonState()" required />
+                  <span id="zipError" class="error-message"></span>
+              </div>
+          </div>
+      </div>
+        <button type="submit" id="submitButton" disabled>Submit</button>
+    </form>
+    <div id="responseMessage"></div>
+
+</div>
+
+</body>
+</html>
